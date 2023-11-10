@@ -1,0 +1,7 @@
+.fa-solid {
+	cursor: pointer;
+	margin-right: 7px;
+}
+.fa-solid:last-of-type {
+	margin-right: 0;
+}
