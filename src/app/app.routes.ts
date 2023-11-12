@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 // Componentes
 import { ListarProductosComponent } from './components/listar-productos/listar-productos.component';
@@ -10,3 +10,4 @@ export const routes: Routes = [
 	{ path: 'editar-producto/:id', component: CrearProductoComponent },
 	{ path: '**', redirectTo: '', pathMatch: 'full' }
 ];
+
