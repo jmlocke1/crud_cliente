@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Producto } from '../../models/producto';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-crear-producto',
@@ -17,7 +19,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 export class CrearProductoComponent implements OnInit {
 	productoForm: FormGroup;
 
-	constructor(private fb: FormBuilder) {
+	constructor(private fb: FormBuilder,
+				private router: Router,
+				private toastr: ToastrService) {
 		this.productoForm = this.fb.group({
 			producto: ['', Validators.required],
 			categoria: ['', Validators.required],
@@ -31,6 +35,14 @@ export class CrearProductoComponent implements OnInit {
 	}
 
 	agregarProducto() {
-		console.log(this.productoForm);
+		const PRODUCTO: Producto = {
+			nombre: this.productoForm.get('producto')?.value,
+			categoria: this.productoForm.get('categoria')?.value,
+			ubicacion: this.productoForm.get('ubicacion')?.value,
+			precio: this.productoForm.get('precio')?.value,
+		}
+		console.log(PRODUCTO);
+		this.toastr.success('El producto fue registrado con éxito', 'Producto Registrado');
+		this.router.navigate(['/']);
 	}
 }
