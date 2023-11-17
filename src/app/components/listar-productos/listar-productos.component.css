@@ -5,3 +5,8 @@
 .fa-solid:last-of-type {
 	margin-right: 0;
 }
+
+.no-productos {
+	margin-top: 10px;
+	color: red;
+}
