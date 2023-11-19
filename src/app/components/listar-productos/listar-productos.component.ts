@@ -37,10 +37,11 @@ export class ListarProductosComponent {
 
 	eliminarProducto(id: any) {
 		this._productoService.eliminarProducto(id).subscribe(data => {
-			this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
+			this.toastr.success('El producto fue eliminado con éxito', 'Producto Eliminado');
 			this.obtenerProductos();
 		}, error => {
 			console.log(error);
+			this.toastr.error('El producto no se pudo eliminar', 'Eliminar Producto fallido');
 		});
 	}
 }
